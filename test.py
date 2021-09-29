@@ -154,7 +154,45 @@
 
 # Buttons
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit, QListWidget, QListWidgetItem
 
-def addLabel(layout, text)
+
+def addLabel(layout, text):
     layout.addWidget(QLabel(text))
+
+
+# Create the Qt Application
+app = QApplication(sys.argv)
+
+# Create the parent widget and the QVBoxLayout Layout Manager
+window = QWidget()
+layout = QVBoxLayout(window)
+
+# Create a QlistWidget
+listWidget = QListWidget()
+for i in range(10):
+    item = QListWidgetItem("Item %i" % i)
+    listWidget.addItem(item)
+
+listWidget.show()
+
+# Create a QLabel Widget and add it to the Layout
+label = QLabel("Add Label")
+layout.addWidget(label)
+
+# Create a QlineEdit to collect user data
+line_edit = QLineEdit()
+layout.addWidget(line_edit)
+
+# Create a QPushButton object with a caption on it
+qbtn = QPushButton('Add Label')
+layout.addWidget(qbtn)
+
+# When clicked, perform a callable function - addLabel()
+qbtn.clicked.connect(lambda:addLabel(layout, line_edit.text()))
+
+# Show the parent widget
+window.show()
+
+# Run the main Qt loop
+sys.exit(app.exec())
