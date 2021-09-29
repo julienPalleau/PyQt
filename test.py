@@ -155,3 +155,6 @@
 # Buttons
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+
+def addLabel(layout, text)
+    layout.addWidget(QLabel(text))
